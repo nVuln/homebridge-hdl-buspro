@@ -78,7 +78,7 @@ export class RelayCurtains implements ABCDevice {
               this.service.getCharacteristic(Characteristic.CurrentPosition).updateValue(this.RelayCurtainsStates.CurrentPosition);
             }
           }, 10 * this.duration);
-          if ((this.RelayCurtainsStates.TargetPosition < this.RelayCurtainsStates.CurrentPosition) || (this.RelayCurtainsStates.TargetPosition === 100)) {
+          if ((this.RelayCurtainsStates.TargetPosition < this.RelayCurtainsStates.CurrentPosition) || (this.RelayCurtainsStates.TargetPosition === 100) || (this.RelayCurtainsStates.TargetPosition === 0 && this.RelayCurtainsStates.CurrentPosition === 0)) {
             this.platform.log.debug('Starting full open of ' + this.name + ' (from ' + this.RelayCurtainsStates.CurrentPosition + ' to ' + this.RelayCurtainsStates.TargetPosition + ')');
             this.RelayCurtainsStates.TargetPosition = 100;
             this.service.getCharacteristic(Characteristic.TargetPosition).updateValue(this.RelayCurtainsStates.TargetPosition);
@@ -106,7 +106,7 @@ export class RelayCurtains implements ABCDevice {
               this.service.getCharacteristic(Characteristic.CurrentPosition).updateValue(this.RelayCurtainsStates.CurrentPosition);
             }
           }, 10 * this.duration);
-          if ((this.RelayCurtainsStates.TargetPosition > this.RelayCurtainsStates.CurrentPosition) || (this.RelayCurtainsStates.TargetPosition === 0)) {
+          if ((this.RelayCurtainsStates.TargetPosition > this.RelayCurtainsStates.CurrentPosition) || (this.RelayCurtainsStates.TargetPosition === 0) || (this.RelayCurtainsStates.TargetPosition === 100 && this.RelayCurtainsStates.CurrentPosition === 100)) {
             this.platform.log.debug('Starting full close of ' + this.name + ' (from ' + this.RelayCurtainsStates.CurrentPosition + ' to ' + this.RelayCurtainsStates.TargetPosition + ')');
             this.RelayCurtainsStates.TargetPosition = 0;
             this.service.getCharacteristic(Characteristic.TargetPosition).updateValue(this.RelayCurtainsStates.TargetPosition);
