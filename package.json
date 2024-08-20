@@ -2,7 +2,7 @@
   "private": false,
   "displayName": "HDLBuspro",
   "name": "@nvuln/homebridge-hdl-buspro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Linking the HDL bus into the Homebridge widget",
   "license": "Apache-2.0",
   "repository": {
